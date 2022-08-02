@@ -1,0 +1,12 @@
+name: Test Action
+
+on:
+  repository_dispatch:
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump event payload
+        run: |
+          jq . "$GITHUB_EVENT_PATH"
