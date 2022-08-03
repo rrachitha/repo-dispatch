@@ -1,7 +1,7 @@
 name: Repository dispatch for fork
 
 on:
-  fork
+  create: ## Just to test rest of the steps work
 
 jobs:
   repo-dispatch:
@@ -14,6 +14,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          repository: jr-rach/support-test-repo
+          repository: rrach/support-repo
           event-type: create_gh_action
           
