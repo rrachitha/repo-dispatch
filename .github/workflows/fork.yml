@@ -1,17 +1,19 @@
-name: Test Action
+name: Repository dispatch for fork
 
 on:
-  create
-
+  fork
 
 jobs:
-  dump:
+  repo-dispatch:
     runs-on: ubuntu-latest
     steps:
+      - name: Sleep for 60 seconds
+        run: sleep 60s
+        shell: bash
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           repository: rrachitha/support-repo
-          event-type: custom_event_type
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          event-type: create_gh_action
+          
